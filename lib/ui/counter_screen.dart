@@ -20,9 +20,9 @@ class _CounterScreenState extends State<CounterScreen> {
       ),
       body: Column(
         children: [
-          BlocBuilder<CounterBloc,CounterState>(
+          BlocBuilder<CounterBloc, CounterState>(
             builder: (context, state) {
-              return  Text(
+              return Text(
                 state.counter.toString(),
                 style: const TextStyle(
                   fontSize: 20,
