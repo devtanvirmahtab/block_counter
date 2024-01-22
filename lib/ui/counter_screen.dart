@@ -18,31 +18,44 @@ class _CounterScreenState extends State<CounterScreen> {
       appBar: AppBar(
         title: const Text("Counter App"),
       ),
-      body: Column(
-        children: [
-          BlocBuilder<CounterBloc, CounterState>(
-            builder: (context, state) {
-              return Text(
-                state.counter.toString(),
-                style: const TextStyle(
-                  fontSize: 20,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            BlocBuilder<CounterBloc, CounterState>(
+              builder: (context, state) {
+                return Text(
+                  state.counter.toString(),
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
+                );
+              },
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<CounterBloc>().add(IncrementCounter());
+                  },
+                  child: const Text("Increase"),
                 ),
-              );
-            },
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.read<CounterBloc>().add(IncrementCounter());
-            },
-            child: const Text("Increase"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.read<CounterBloc>().add(DecrementCounter());
-            },
-            child: const Text("Decrease"),
-          ),
-        ],
+                const SizedBox(
+                  width: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<CounterBloc>().add(DecrementCounter());
+                  },
+                  child: const Text("Decrease"),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
